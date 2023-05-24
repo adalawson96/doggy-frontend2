@@ -14,12 +14,14 @@ export default function NewDogForm(){
 
     const handleSubmit = async (evt) => {
         evt.preventDefault();
-        const res = await fetch('  https://dog-app.herokuapp.com/', {
-        headers: { 'Content-Type' : 'application/json'},
-        method: 'POST',
+        const response = await fetch( 'https://dog-app.herokuapp.com/dogs', {
+            method: 'POST',
+            headers: { 
+                'Content-Type' : 'application/json'
+            },
         body: JSON.stringify({ name: newDog.name, age: Number(newDog.age) })
     })
-        const dog = await res.json()
+        const dog = await response.json()
 
         if(dog){
             router.push('/dogs')
@@ -30,10 +32,10 @@ export default function NewDogForm(){
         <div>
             <h1>New dog form</h1>
             <form onSubmit={handleSubmit}>
-                <label for="name">Name:
+                <label htmlFor="name"> Name:
                     <input type="text" name="name" id="name" onChange={handleChange} />
                 </label>
-                <label for="age"> Age:
+                <label htmlFor="age"> Age:
                     <input type="number" name="age" id="age" onChange={handleChange} />
                 </label>
                 <input type="submit" value="create dog" />

@@ -9,7 +9,7 @@ const [dogs, setDogs] = useState([]);
 useEffect(() => {
     const getDogs = async () => {
         const response = await fetch('https://dog-app.herokuapp.com/dogs');
-        const dogs = await Response.json();
+        const retrieveDogs = await response.json();
        setDogs(retrieveDogs);
     }
     getDogs()

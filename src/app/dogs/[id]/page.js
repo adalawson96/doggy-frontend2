@@ -8,9 +8,9 @@ export default function Dog({ params }){
     
     useEffect(() => {
         const getDog = async () => {
-            const response = await fetch('https://dog-app.herokuapp.com/dogs');
-            const retrievedDog = await Response.json();
-           setDog(retrieveDog);
+            const response = await fetch(`https://dog-app.herokuapp.com/dogs/${params.id}`);
+            const retrievedDog = await response.json();
+           setDog(retrievedDog);
         }
         getDog()
     }, [ params._id ]);
